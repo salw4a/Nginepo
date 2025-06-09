@@ -149,4 +149,10 @@ class PenyewaController extends Controller
         return redirect()->route('transaksi.detail', $transaksi->id_transaksi)
                          ->with('success', 'Transaksi berhasil dibuat dengan nomor invoice ' . $nomorInvoice);
     }
+
+public function showProfile()
+{
+    $penyewa = Auth::guard('pengguna')->user();
+    return view('penyewa.profiles.profile', compact('penyewa'));
+}
 }

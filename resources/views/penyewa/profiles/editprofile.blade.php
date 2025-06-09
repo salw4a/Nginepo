@@ -43,7 +43,7 @@
 
         <!-- Tombol Simpan -->
         <div class="flex justify-end mt-8 space-x-4">
-            {{-- <a href="{{ route('penyewa.profile.index') }}"> --}}
+            <a href="{{ route('penyewa.dashboard.profiles') }}">
                 <button type="button" class="bg-gray-300 text-gray-800 font-semibold py-2 px-6 rounded-lg hover:bg-gray-400 transition">
                     Batal
                 </button>

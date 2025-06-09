@@ -30,7 +30,7 @@ Route::prefix('penyewa')->name('penyewa.')->middleware(['auth:pengguna', 'role:p
     Route::get('/penyewa/transaksi/{id}/review', [PenyewaController::class, 'createReview'])->name('transaksi.review.create');
     Route::get('dashboard/profile', [ProfileController::class, 'index'])->name('dashboard.profiles');
     Route::get('profile/editprofile', [ProfileController::class, 'edit'])->name('profiles.editprofile');
-
+    Route::get('editprofile/profile', [ProfileController::class, 'showProfile'])->name('editprofile.profile');
 
 
     // Proses simpan data

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nginepo - Platform Penyewaan Rumah Wisata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
             margin: 0;
@@ -331,11 +332,11 @@
     </style>
 </head>
 <body>
-    
+
         <!-- Header -->
         <header class="header">
         <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
-        
+
         <!-- Logo sebagai gambar -->
         <a href="{{ url('/') }}" class="logo">
             <img src="{{ asset('images/favicon.png') }}" alt="Nginepo Logo" style="height: 40px;">
@@ -356,11 +357,12 @@
             @if(Auth::check())
                 <!-- Jika sudah login, tampilkan ikon profil -->
                 <a href="{{ route('penyewa.dashboard.profiles') }}" class="profile-icon" style="padding: 6px 12px; background-color:rgb(153, 65, 30); color: white; border-radius: 6px; text-decoration: none;">🐵</a>
-             
+
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" title="Logout" style="font-size: 24px; border: none; background: none; cursor: pointer;">
-                        logout
+                    <button type="submit"
+                    class="bg-red-600 text-white font-semibold py-2 px-6 rounded hover:bg-red-700 transition border-2 border-red-700">
+                    Logout
                     </button>
                 </form>
 
@@ -519,7 +521,7 @@
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-8px) scale(1.02)';
             });
-            
+
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
