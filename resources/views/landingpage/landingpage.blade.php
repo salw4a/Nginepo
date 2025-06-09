@@ -355,10 +355,12 @@
         <div class="auth-section" style="display: flex; gap: 10px; align-items: center;">
             @if(Auth::check())
                 <!-- Jika sudah login, tampilkan ikon profil -->
+                <a href="{{ route('penyewa.dashboard.profiles') }}" class="profile-icon" style="padding: 6px 12px; background-color:rgb(153, 65, 30); color: white; border-radius: 6px; text-decoration: none;">🐵</a>
+             
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="profile-icon" title="Logout" style="font-size: 24px; border: none; background: none; cursor: pointer;">
-                        🐵
+                    <button type="submit" title="Logout" style="font-size: 24px; border: none; background: none; cursor: pointer;">
+                        logout
                     </button>
                 </form>
 
