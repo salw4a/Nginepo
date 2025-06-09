@@ -355,7 +355,13 @@
         <div class="auth-section" style="display: flex; gap: 10px; align-items: center;">
             @if(Auth::check())
                 <!-- Jika sudah login, tampilkan ikon profil -->
-                <!-- <a href="#" class="profile-icon" title="Profil" style="font-size: 24px;">🐵</a> -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="profile-icon" title="Logout" style="font-size: 24px; border: none; background: none; cursor: pointer;">
+                        🐵
+                    </button>
+                </form>
+
             @else
                 <!-- Jika belum login, tampilkan tombol Login & Register -->
                 <a href="{{ route('login') }}" class="btn-login" style="padding: 6px 12px; background-color:rgb(153, 65, 30); color: white; border-radius: 6px; text-decoration: none;">Login</a>
