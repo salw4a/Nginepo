@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PemilikController;
 use App\Http\Controllers\PenyewaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/', function () {
+    return view('penyewa.profiles.editprofile');
+});
+// Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -24,6 +28,7 @@ Route::prefix('penyewa')->name('penyewa.')->middleware(['auth:pengguna', 'role:p
     Route::get('transaksi/{id}', [PenyewaController::class, 'detailTransaksi'])->name('transaksi.detail');
     Route::get('transaksi/{id}/review', [PenyewaController::class, 'storeReview'])->name('transaksi.review.store');
     Route::get('/penyewa/transaksi/{id}/review', [PenyewaController::class, 'createReview'])->name('transaksi.review.create');
+    Route::get('profile/editprofile', [ProfileController::class, 'updateProfile'])->name('profiles.editprofile');
 });
 Route::prefix('pemilik')->name('pemilik.')->middleware(['auth:pemilik', 'role:pemilik'])->group(function () {
     Route::get('dashboard', [PemilikController::class, 'dashboard'])->name('dashboard');
