@@ -9,7 +9,7 @@
     </div>
 
     <!-- Form Edit Profil -->
-    <form action="{{ route('penyewa.profile.update') }}" method="POST" class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-md">
+    <form action="{{ route('penyewa.profiles.update') }}" method="POST" class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-md">
         @csrf
         @method('PUT')
 
@@ -22,7 +22,7 @@
             <!-- Email -->
             <div>
                 <label for="email" class="block text-[#5B3A29] font-semibold mb-2">Email</label>
-                <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" class="w-full bg-[#8B6651] text-white rounded-lg p-3" required>
+                <input type="email" id="email" name="email" value="{{ old('email', $penyewa->email) }}" class="w-full bg-[#8B6651] text-white rounded-lg p-3" required>
             </div>
             <!-- Password -->
             <div>
@@ -32,12 +32,12 @@
             <!-- Nomor HP -->
             <div>
                 <label for="phone" class="block text-[#5B3A29] font-semibold mb-2">Nomor HP</label>
-                <input type="text" id="phone" name="phone" value="{{ old('phone', $user->phone) }}" class="w-full bg-[#8B6651] text-white rounded-lg p-3" required>
+                <input type="text" id="phone" name="phone" value="{{ old('phone', $penyewa->phone) }}" class="w-full bg-[#8B6651] text-white rounded-lg p-3" required>
             </div>
             <!-- Alamat -->
             <div class="md:col-span-2">
                 <label for="address" class="block text-[#5B3A29] font-semibold mb-2">Alamat</label>
-                <input type="text" id="address" name="address" value="{{ old('address', $user->address) }}" class="w-full bg-[#8B6651] text-white rounded-lg p-3" required>
+                <input type="text" id="address" name="address" value="{{ old('address', $penyewa->address) }}" class="w-full bg-[#8B6651] text-white rounded-lg p-3" required>
             </div>
         </div>
 
