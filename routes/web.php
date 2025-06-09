@@ -6,9 +6,9 @@ use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 
-// Route::get('/', function () {
-//     return view('penyewa.profiles.editprofile');
-// });
+Route::get('/', function () {
+    return view('penyewa.profiles.editprofile');
+});
 // Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
@@ -28,8 +28,10 @@ Route::prefix('penyewa')->name('penyewa.')->middleware(['auth:pengguna', 'role:p
     Route::get('transaksi/{id}', [PenyewaController::class, 'detailTransaksi'])->name('transaksi.detail');
     Route::get('transaksi/{id}/review', [PenyewaController::class, 'storeReview'])->name('transaksi.review.store');
     Route::get('/penyewa/transaksi/{id}/review', [PenyewaController::class, 'createReview'])->name('transaksi.review.create');
-
+    Route::get('dashboard/profile', [ProfileController::class, 'index'])->name('dashboard.profiles');
     Route::get('profile/editprofile', [ProfileController::class, 'edit'])->name('profiles.editprofile');
+
+
 
     // Proses simpan data
     Route::put('profile/update', [ProfileController::class, 'updateProfile'])->name('profiles.update');
