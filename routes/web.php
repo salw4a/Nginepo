@@ -9,7 +9,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertiController;
 
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/', function () {
+    return view('penyewa.profiles.editprofile');
+});
+// Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::get('/register', [RegisterController::class, 'showRegistForm'])->name('register');
@@ -17,7 +20,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth:pengguna', 'role:penyewa'])->get('/homepage-pengguna', function () {
-    return view('penyewa.home.homepage');
+    return view('landingpage.landingpage');
 })->name('homepage-pengguna');
 Route::middleware(['auth:pemilik', 'role:pemilik'])->get('/dashboard-pemilik', [PemilikController::class, 'dashboard'])->name('dashboard-pemilik');
 

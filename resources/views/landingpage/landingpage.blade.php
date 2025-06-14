@@ -1,217 +1,531 @@
-@section('title', 'Landingpage')
-
-<nav class="bg-white shadow-sm border-b">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            <div class="flex items-center">
-                <div class="text-2xl font-bold text-amber-800">Nginepo</div>
-            </div>
-
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="{{ route('home') }}" class="text-amber-800 font-medium hover:text-amber-600 transition-colors">Beranda</a>
-                <a href="#" onclick="requireLogin('katalog')" class="text-gray-700 hover:text-amber-600 transition-colors cursor-pointer">Katalog</a>
-                <a href="#" onclick="requireLogin('transaksi')" class="text-gray-700 hover:text-amber-600 transition-colors cursor-pointer">Transaksi</a>
-            </div>
-
-            <div class="flex items-center space-x-4">
-                <a href="{{ route('login') }}" class="text-gray-700 hover:text-amber-600 transition-colors px-4 py-2 rounded-lg border border-gray-300 hover:border-amber-300">Login</a>
-                <a href="{{ route('register') }}" class="bg-amber-800 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors">Register</a>
-            </div>
-
-            <div class="md:hidden">
-                <button onclick="toggleMobileMenu()" class="text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-        <div class="px-4 py-3 space-y-3">
-            <a href="{{ route('home') }}" class="block text-amber-800 font-medium">Beranda</a>
-            <a href="#" onclick="requireLogin('katalog')" class="block text-gray-700">Katalog</a>
-            <a href="#" onclick="requireLogin('transaksi')" class="block text-gray-700">Transaksi</a>
-            <div class="pt-3 border-t">
-                <a href="{{ route('login') }}" class="block text-gray-700 py-2">Login</a>
-                <a href="{{ route('register') }}" class="block bg-amber-800 text-white px-4 py-2 rounded-lg text-center">Register</a>
-            </div>
-        </div>
-    </div>
-</nav>
-
-<section class="hero-bg h-96 flex items-center justify-center text-white text-center">
-    <div class="max-w-4xl mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Selamat Datang!</h1>
-        <p class="text-xl md:text-2xl mb-8 opacity-90">
-            Dengan Nginepo, penyewaan tempat penginapan<br>
-            dapat dilakukan dimana saja dan kapan saja
-        </p>
-        <button onclick="requireLogin('booking')" class="bg-amber-800 hover:bg-amber-700 text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors">
-            Booking sekarang
-        </button>
-    </div>
-</section>
-
-<section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">Penginapan populer di Jember</h2>
-        <a href="#" onclick="requireLogin('katalog')" class="text-amber-800 hover:text-amber-600 font-medium underline">Lihat selengkapnya</a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div class="h-48 bg-gradient-to-br from-green-400 to-green-600"></div>
-            <div class="p-4">
-                <h3 class="font-semibold text-gray-900 mb-2">Pondok Rowo Indah</h3>
-                <p class="text-amber-800 font-medium">Rp 150.000 per malam</p>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div class="h-48 bg-gradient-to-br from-amber-400 to-amber-600"></div>
-            <div class="p-4">
-                <h3 class="font-semibold text-gray-900 mb-2">Omah Tawon</h3>
-                <p class="text-amber-800 font-medium">Rp 135.000 per malam</p>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600"></div>
-            <div class="p-4">
-                <h3 class="font-semibold text-gray-900 mb-2">Omah Kali Putih</h3>
-                <p class="text-amber-800 font-medium">Rp 200.000 per malam</p>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div class="h-48 bg-gradient-to-br from-red-400 to-red-600"></div>
-            <div class="p-4">
-                <h3 class="font-semibold text-gray-900 mb-2">Teras Tanjung Papuma</h3>
-                <p class="text-amber-800 font-medium">Rp 250.000 per malam</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="bg-gray-100 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">About Us</h2>
-        <div class="flex justify-center mb-8">
-            <div class="text-4xl font-bold text-amber-800">Nginepo</div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div class="bg-amber-200 rounded-lg p-8">
-                <div class="text-4xl mb-4">🏛️</div>
-                <p class="text-gray-700 leading-relaxed">
-                    Sebuah platform untuk penyewaan rumah warga di wilayah wisata Jember
-                </p>
-            </div>
-
-            <div class="bg-amber-200 rounded-lg p-8">
-                <div class="text-4xl mb-4">📍</div>
-                <p class="text-gray-700 leading-relaxed">
-                    Katalog yang informatif mulai dari lokasi, harga, fasilitas serta dilengkapi dengan foto
-                </p>
-            </div>
-
-            <div class="bg-amber-200 rounded-lg p-8">
-                <div class="text-4xl mb-4">💳</div>
-                <p class="text-gray-700 leading-relaxed">
-                    Proses transaksi yang aman dan terdokumentasi
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-white border-t py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h3 class="font-semibold text-gray-900 mb-4">Navigasi</h3>
-                <ul class="space-y-2">
-                    <li><a href="{{ route('home') }}" class="text-gray-600 hover:text-amber-600">Beranda</a></li>
-                    <li><a href="#" onclick="requireLogin('katalog')" class="text-gray-600 hover:text-amber-600">Katalog</a></li>
-                    <li><a href="#" onclick="requireLogin('transaksi')" class="text-gray-600 hover:text-amber-600">Transaksi</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <p class="text-gray-600 text-center">
-                    Sistem penyewaan rumah lokal © 2025 - Platform terpercaya untuk penyewaan lokal wilayah wisata Jember
-                </p>
-            </div>
-
-            <div>
-                <h3 class="font-semibold text-gray-900 mb-4">Contact Us</h3>
-                <p class="text-gray-600">+62-834-7619-2563</p>
-            </div>
-        </div>
-
-        <div class="mt-8 pt-8 border-t text-center">
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="text-gray-400 hover:text-gray-600">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-gray-600">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-gray-600">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.404-5.966 1.404-5.966s-.359-.219-.359-1.219c0-1.142.662-1.995 1.488-1.995.702 0 1.041.219 1.041 1.219 0 .662-.359 1.488-.539 2.262-.219.937.219 1.697 1.219 1.697 1.404 0 2.262-1.697 2.262-3.439 0-1.781-1.219-3.098-3.098-3.098-2.262 0-3.658 1.641-3.658 3.439 0 .662.199 1.404.539 1.781-.061.199-.199.662-.219.842-.041.199-.041.199-.199.199-.662-.041-1.083-.662-1.083-1.404 0-2.403 1.697-4.665 5.038-4.665 2.641 0 4.665 1.904 4.665 4.382 0 2.641-1.563 4.665-3.816 4.665-.762 0-1.483-.419-1.723-.898 0 0-.419 1.563-.498 1.921-.199.762-.662 1.404-1.004 1.904.762.219 1.563.359 2.403.359 6.621 0 11.988-5.367 11.988-11.987C24.005 5.367 18.638.001 12.017.001z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg p-8 max-w-md mx-4">
-        <div class="text-center">
-            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-amber-100 mb-4">
-                <svg class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-            </div>
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Login Diperlukan</h3>
-            <p class="text-gray-600 mb-6">Silakan login terlebih dahulu untuk mengakses halaman ini.</p>
-            <div class="flex space-x-4">
-                <button onclick="closeModal()" class="flex-1 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
-                    Batal
-                </button>
-                <a href="{{ route('login') }}" class="flex-1 bg-amber-800 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors text-center">
-                    Login
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function requireLogin(page) {
-        document.getElementById('loginModal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-        document.getElementById('loginModal').classList.add('hidden');
-    }
-
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-    }
-
-    document.getElementById('loginModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeModal();
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nginepo - Platform Penyewaan Rumah Wisata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    });
-</script>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #8B4513;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #8B4513;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: #FFA500;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url("{{ asset('images/landingpage.png') }}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-top: 70px;
+        }
+
+
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: #8B4513;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #A0522D;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Popular Accommodations */
+        .popular-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        .view-all {
+            color: #8B4513;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+            .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .accommodation-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .accommodation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 15px;
+        }
+
+
+        .card-content {
+            padding: 15px 20px 20px;
+        }
+
+        /* About Section */
+        .about-section {
+            background:rgb(255, 255, 255);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-size: 36px;
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .about-logo {
+            font-size: 48px;
+            color: #8B4513;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: rgba(139, 69, 19, 0.1);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #8B4513;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background:rgb(255, 255, 255);
+            color: brown;
+            padding: 50px 20px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .footer-section a {
+            color: brown;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid brown;
+            color: #DDD;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .accommodation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+        <!-- Header -->
+        <header class="header">
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+
+        <!-- Logo sebagai gambar -->
+        <a href="{{ url('/') }}" class="logo">
+            <img src="{{ asset('images/favicon.png') }}" alt="Nginepo Logo" style="height: 40px;">
+        </a>
+
+        <!-- Navigasi -->
+        <nav>
+            <ul class="nav-links" style="display: flex; gap: 20px; list-style: none;">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#katalog">Katalog</a></li>
+                <li><a href="#transaksi">Transaksi</a></li>
+                <li><a href="#kalender">Kalender</a></li>
+            </ul>
+        </nav>
+
+        <!-- Auth: Login/Register untuk guest, profil untuk user -->
+        <div class="auth-section" style="display: flex; gap: 10px; align-items: center;">
+            @if(Auth::check())
+                <!-- Jika sudah login, tampilkan ikon profil -->
+                <a href="{{ route('penyewa.dashboard.profiles') }}" class="profile-icon" style="padding: 6px 12px; background-color:rgb(153, 65, 30); color: white; border-radius: 6px; text-decoration: none;">🐵</a>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit"
+                    class="bg-red-600 text-white font-semibold py-2 px-6 rounded hover:bg-red-700 transition border-2 border-red-700">
+                    Logout
+                    </button>
+                </form>
+
+            @else
+                <!-- Jika belum login, tampilkan tombol Login & Register -->
+                <a href="{{ route('login') }}" class="btn-login" style="padding: 6px 12px; background-color:rgb(153, 65, 30); color: white; border-radius: 6px; text-decoration: none;">Login</a>
+                <!-- <a href="#" class="btn-register" style="padding: 6px 12px; background-color:rgb(155, 76, 47); color: white; border-radius: 6px; text-decoration: none;">Register</a> -->
+            @endif
+        </div>
+    </div>
+</header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h1>Selamat Datang!</h1>
+            <p>Dengan Nginepo, penyewaan tempat penginapan dapat dilakukan dimana saja dan kapan saja</p>
+            <a href="#katalog" class="cta-button">Booking sekarang</a>
+        </div>
+    </section>
+
+    <!-- Popular Accommodations -->
+    <section class="popular-section" id="katalog">
+        <div class="section-header">
+            <h2>Penginapan popular di Jember</h2>
+            <a href="#" class="view-all">Lihat selengkapnya</a>
+        </div>
+        <div class="accommodation-grid">
+            <div class="accommodation-card">
+                <div class="card-image"><img src="images/terastanjung.png" alt="Omah Tawon"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Pondok Rowo Indah</h3>
+                    <p class="card-price">Rp 150.000 per malam</p>
+                </div>
+            </div>
+            <div class="accommodation-card">
+                <div class="card-image"><img src="images/kertanegara.png" alt="Omah Tawon"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Omah Tawon</h3>
+                    <p class="card-price">Rp 135.000 per malam</p>
+                </div>
+            </div>
+            <div class="accommodation-card">
+                <div class="card-image"><img src="images/omahkali.png" alt="Omah Tawon"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Omah Kali Putih</h3>
+                    <p class="card-price">Rp 200.000 per malam</p>
+                </div>
+            </div>
+            <div class="accommodation-card">
+                <div class="card-image">  <img src="images/omahdewe.png" alt="Omah Tawon"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Teras Tanjung Papuma</h3>
+                    <p class="card-price">Rp 250.000 per malam</p>
+                </div>
+            </div>
+            <div class="accommodation-card">
+                <div class="card-image">  <img src="images/landingpage.png" alt="Kertanegara"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Kertanegara</h3>
+                    <p class="card-price">Rp 450.000 per malam</p>
+                </div>
+            </div>
+            <div class="accommodation-card">
+                <div class="card-image">  <img src="images/rembangan.png" alt="rembangan"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Rembangan Hill</h3>
+                    <p class="card-price">Rp 300.000 per malam</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- About Section -->
+    <section class="about-section">
+        <hr class="full-width-line">
+        <div class="about-container">
+            <h2>About Us</h2>
+            <div class="about-logo">
+                <img src="{{ asset('images/favicon.png') }}" style="height: 100px;">
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Sebuah platform untuk penyewaan rumah warga di wilayah wisata Jember</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Katalog yang informatif mulai dari lokasi, harga, fasilitas serta dilengkapi dengan foto</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Proses transaksi yang aman dan terdokumentasi</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-bottom"></div>
+        <div class="footer-container">
+            <div class="footer-section">
+                <a href="#beranda">Beranda</a>
+                <a href="#katalog">Katalog</a>
+                <a href="#transaksi">Transaksi</a>
+            </div>
+            <div class="footer-section center-text">
+                <p>Sistem penyewaan rumah lokal © 2025 - Platform terpercaya untuk penyewaan lokal wilayah wisata Jember</p>
+            </div>
+            <div class="footer-section" style="text-align: right;">
+                <h4>Contact Us</h4>
+                <p>+62-834-7619-2563</p>
+            </div>
+        </div>
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">🐦</a>
+                <a href="#">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add hover effect to accommodation cards
+        document.querySelectorAll('.accommodation-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

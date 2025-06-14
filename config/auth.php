@@ -27,6 +27,11 @@ return [
             'driver' => 'session',
             'provider' => 'pemiliks',
         ],
+
+        'penyewa' => [
+            'driver' => 'session',
+            'provider' => 'penyewas',
+        ],
     ],
 
     'providers' => [
@@ -37,6 +42,10 @@ return [
         'pemiliks' => [
             'driver' => 'eloquent',
             'model' => App\Models\Pemilik::class,
+        ],
+         'penyewas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Penyewa::class, // pastikan nama model benar
         ],
     ],
 
@@ -56,5 +65,7 @@ return [
     ],
 
     'password_timeout' => 10800,
+
+
 
 ];
