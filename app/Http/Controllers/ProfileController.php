@@ -129,6 +129,7 @@ class ProfileController extends Controller
 
                 // Simpan foto baru
                 $path = $request->file('foto_profil')->store('foto_profil', 'public');
+                // dd($path);
                 $user->foto_profil = $path;
             }
 
