@@ -82,8 +82,8 @@ class PenyewaController extends Controller
 
     public function detailTransaksi($id)
     {
-        $transaksi = Transaksi::with(['statusPembayaran', 'pengguna', 'review'])->findOrFail($id);
-
+        // $transaksi = Transaksi::with('review')->find($id);
+        $transaksi = Transaksi::with(['review', 'statusPembayaran'])->findOrFail($id);
         return view('penyewa.transaksis.detail', compact('transaksi'));
     }
 
@@ -118,7 +118,8 @@ class PenyewaController extends Controller
             'komentar' => $request->komentar,
         ]);
 
-        return redirect()->back()->with('success', 'Review berhasil ditambahkan!');
+        return redirect()->route('penyewa.transaksi.detail', $transaksi->id_transaksi)
+        ->with('success', 'Review berhasil ditambahkan!');
     }
 
     public function store(Request $request)

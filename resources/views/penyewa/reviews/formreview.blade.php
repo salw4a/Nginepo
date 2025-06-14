@@ -79,26 +79,26 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('penyewa.transaksi.review.store', $transaksi->id_transaksi) }}" method="POST">
+                    <form id="reviewForm" action="{{ route('penyewa.transaksi.review.store', $transaksi->id_transaksi) }}" method="POST">
                         @csrf
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Rating</label>
-
-                            <x-star-rating :rating="old('rating', 0)" />
-
-                            <input type="hidden" id="rating" name="rating" value="{{ old('rating', 0) }}" required>
-
+                            <div id="star-rating" class="flex space-x-1 select-none">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}" class="hidden" {{ old('rating', 0) == $i ? 'checked' : '' }}>
+                                    <label for="star{{ $i }}" class="cursor-pointer text-3xl text-gray-300 transition-all duration-200">&#9733;</label>
+                                @endfor
+                            </div>
                             @error('rating')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
-
                         <div class="mb-6">
                             <label for="komentar" class="block text-sm font-medium text-gray-700 mb-2">Komentar (Opsional)</label>
                             <textarea id="komentar" name="komentar" rows="4"
-                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"
-                                      placeholder="Bagikan pengalaman Anda...">{{ old('komentar') }}</textarea>
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"
+                                    placeholder="Bagikan pengalaman Anda...">{{ old('komentar') }}</textarea>
                             @error('komentar')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -106,7 +106,7 @@
 
                         <div class="flex justify-end space-x-3">
                             <button type="submit"
-                                    class="btn-detail text-white px-6 py-2 rounded-md font-medium hover:shadow-lg transition-all duration-300">
+                                    class="bg-[#8B4513] text-white border-2 border-[#8B4513] px-8 py-3 rounded-lg font-medium hover:bg-[#7A3E10] transition-all shadow inline-block">
                                 Submit Review
                             </button>
                         </div>
@@ -115,4 +115,62 @@
             @endif
         </div>
     </div>
+    <a href="{{ route('penyewa.transaksi.detail', ['id' => $transaksi->id_transaksi]) }}"
+    onclick="return confirm('Apakah kamu yakin ingin kembali? Review yang telah dibuat akan hilang.');">
+        <button id="btn-back" type="button"
+            class="pl-10 mb-4 bg-white-300 hover:text-opacity-80 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center">
+            &lt; Kembali
+        </button>
+    </a>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('reviewForm');
+        const stars = document.querySelectorAll('#star-rating label');
+        const radios = document.querySelectorAll('#star-rating input[name="rating"]');
+
+        function setStars(rating) {
+            stars.forEach((star, idx) => {
+                if (idx + 1 <= rating) {
+                    star.classList.add('text-yellow-400');
+                    star.classList.remove('text-gray-300');
+                } else {
+                    star.classList.remove('text-yellow-400');
+                    star.classList.add('text-gray-300');
+                }
+            });
+        }
+
+        let oldRating = 0;
+        radios.forEach(radio => {
+            if (radio.checked) oldRating = parseInt(radio.value);
+        });
+        setStars(oldRating);
+
+        stars.forEach((star, idx) => {
+            star.addEventListener('mouseenter', () => {
+                setStars(idx + 1);
+            });
+
+            star.addEventListener('mouseleave', () => {
+                setStars(oldRating);
+            });
+
+            star.addEventListener('click', () => {
+                oldRating = idx + 1;
+                radios[idx].checked = true;
+                setStars(oldRating);
+            });
+        });
+
+        form.addEventListener('submit', function (e) {
+            const isChecked = Array.from(radios).some(radio => radio.checked);
+            if (!isChecked) {
+                e.preventDefault();
+                alert('Silakan pilih rating bintang terlebih dahulu!');
+            }
+        });
+    });
+</script>
+@endsection

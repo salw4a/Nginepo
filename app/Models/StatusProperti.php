@@ -11,15 +11,16 @@ class StatusProperti extends Model
 
     protected $table = 'status_properti';
     protected $primaryKey = 'id_status_properti';
-    public $incrementing = true;
-    protected $keyType = 'int';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     protected $fillable = [
-        'nama_status'
+        'id_status_properti',
+        'nama_status_properti',
     ];
 
     public function properti()
     {
-        return $this->hasMany(Properti::class);
+        return $this->hasMany(Properti::class, 'id_status_properti', 'id_status_properti');
     }
 }

@@ -9,7 +9,7 @@ class PropertiSeeder extends Seeder
 {
     public function run(): void
     {
-        $properti = [
+        $propertiData = [
             [
                 'nama_properti' => 'Pondok Rowo Indah',
                 'lokasi' => 'Jalan Tawangalun, No 15',
@@ -92,7 +92,9 @@ class PropertiSeeder extends Seeder
             ]
         ];
 
-        foreach ($properti as $data) {
+        foreach ($propertiData as $data) {
+            $data['id_verifikasi_properti'] = '1'; // Default as verified
+            $data['id_status_properti'] = (string)$data['id_status_properti']; // Convert to string to match model
             Properti::create($data);
         }
     }

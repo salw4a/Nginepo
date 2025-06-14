@@ -33,7 +33,7 @@ class LoginController extends Controller
             if (Auth::guard('pengguna')->attempt(['email' => $email, 'password' => $password])) {
                 $request->session()->regenerate();
                 if ($pengguna->role && $pengguna->role->nama_role === 'admin') {
-                    return redirect()->intended('/dashboard-admin');
+                    return redirect()->route('admin.dashboard');
                 } elseif ($pengguna->role && $pengguna->role->nama_role === 'penyewa') {
                     return redirect()->intended('/homepage-pengguna');
                 } else {

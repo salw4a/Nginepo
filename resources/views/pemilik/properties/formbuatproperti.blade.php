@@ -119,7 +119,6 @@
                         </div>
                         <p class="text-xs text-gray-500">PNG, JPG, GIF hingga 2MB</p>
 
-                        <!-- Tempat Preview Gambar -->
                         <div class="file-preview-container mt-4"></div>
                     </div>
                 </div>

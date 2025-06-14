@@ -23,7 +23,6 @@
         </form>
     </div>
 
-    <!-- Location Filter -->
     <div class="mb-8">
         <h3 class="text-lg font-semibold text-brown-900 mb-4">Filter Lokasi:</h3>
         <div class="flex flex-wrap gap-2">
@@ -40,16 +39,14 @@
         </div>
     </div>
 
-    <!-- Page Title -->
     <h1 class="text-3xl font-bold text-brown-900 mb-8">Penginapan di Jember</h1>
 
-    <!-- Properties Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse($properti as $item)
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
                  onclick="window.location='{{ route('penyewa.properti.detail', $item->id_properti) }}'">
                 <div class="aspect-w-16 aspect-h-12 bg-gray-200">
-                    <img src="{{ asset('storage/' . $item->foto) }}"
+                    <img src="{{ $item->foto }}"
                          alt="{{ $item->nama_properti }}"
                          class="w-full h-48 object-cover"
                          onerror="this.src='https://via.placeholder.com/400x300/e5e7eb/9ca3af?text=No+Image'">

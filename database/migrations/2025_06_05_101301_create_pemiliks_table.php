@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('pemilik', function (Blueprint $table) {
             $table->id('id_pemilik');
-            $table->string('nama_pemilik');
+            $table->string('nama');
             $table->string('kata_sandi');
             $table->string('email')->unique();
             $table->string('telepon');

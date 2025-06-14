@@ -10,7 +10,19 @@ class StatusPropertiSeeder extends Seeder
 {
     public function run(): void
     {
-        StatusProperti::create(['nama_status_properti' => 'tersedia']);
-        StatusProperti::create(['nama_status_properti' => 'tidak_tersedia']);
+        $statusPropertis = [
+            [
+                'id_status_properti' => '1',
+                'nama_status_properti' => 'tersedia'
+            ],
+            [
+                'id_status_properti' => '2',
+                'nama_status_properti' => 'tidak_tersedia'
+            ],
+        ];
+
+        foreach ($statusPropertis as $statusProperti) {
+            StatusProperti::create($statusProperti);
+        }
     }
 }

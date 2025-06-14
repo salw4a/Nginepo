@@ -27,58 +27,60 @@
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
             <div class="aspect-w-16 aspect-h-12">
-                <img src="{{ asset('storage/' . $properti->foto) }}"
+                <img src="{{ $properti->foto }}"
                      alt="{{ $properti->nama_properti }}"
                      class="w-full h-80 object-cover rounded-lg shadow-md"
                      onerror="this.src='https://via.placeholder.com/600x400/e5e7eb/9ca3af?text=No+Image'">
             </div>
-
-            <div class="space-y-6">
-                <h2 class="text-2xl font-bold text-brown-900">{{ $properti->nama_properti }}</h2>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Lokasi</label>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg border">
-                        <p class="text-gray-800">{{ $properti->lokasi }}</p>
-                    </div>
+    <div class="flex flex-col justify-between">
+        <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-brown-900">{{ $properti->nama_properti }}</h2>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Lokasi</label>
+                <div class="bg-gray-50 px-4 py-3 rounded-lg border">
+                    <p class="text-gray-800">{{ $properti->lokasi }}</p>
                 </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Maksimum Tamu</label>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg border">
-                        <p class="text-gray-800">{{ $properti->maksimum_tamu }} tamu</p>
-                    </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Maksimum Tamu</label>
+                <div class="bg-gray-50 px-4 py-3 rounded-lg border">
+                    <p class="text-gray-800">{{ $properti->maksimum_tamu }} tamu</p>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg border">
-                        <p class="text-gray-800">{{ $properti->deskripsi }}</p>
-                    </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                <div class="bg-gray-50 px-4 py-3 rounded-lg border">
+                    <p class="text-gray-800">{{ $properti->deskripsi }}</p>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Harga</label>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg border">
-                        <p class="text-gray-800">{{ $properti->formatted_harga }} per malam</p>
-                    </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Harga</label>
+                <div class="bg-gray-50 px-4 py-3 rounded-lg border">
+                    <p class="text-gray-800">{{ $properti->formatted_harga }} per malam</p>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Ketersediaan</label>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg border">
-                        <span class="px-3 py-1 {{ $properti->status->nama_status == 'tersedia' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }} rounded-full text-sm font-medium">
-                            {{ ucfirst($properti->status->nama_status) }}
-                        </span>
-                    </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Ketersediaan</label>
+                <div class="bg-gray-50 px-4 py-3 rounded-lg border">
+                    <span class="px-3 py-1 text-xs font-bold uppercase rounded-full {{ $properti->status->nama_status_properti == 'tersedia' ? 'bg-green-500 text-white' : 'bg-red-500 text-white' }}">
+                        {{ ucfirst($properti->status->nama_status_properti) }}
+                    </span>
                 </div>
-                @if($properti->status->nama_status == 'tersedia')
-                    <button class="w-full bg-brown-900 text-white py-3 px-6 rounded-lg font-semibold hover:bg-brown-800 transition-colors">
-                        Booking
-                    </button>
-                @else
-                    <button class="w-full bg-gray-400 text-white py-3 px-6 rounded-lg font-semibold cursor-not-allowed" disabled>
-                        Tidak Tersedia
-                    </button>
-                @endif
             </div>
         </div>
+
+        <div class="mt-6">
+            @if($properti->status->nama_status_properti == 'tersedia')
+                <button class="w-full bg-amber-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-amber-900 transition-colors">
+                    Booking
+                </button>
+            @else
+                <button class="w-full bg-gray-400 text-white py-3 px-6 rounded-lg font-semibold cursor-not-allowed" disabled>
+                    Tidak Tersedia
+                </button>
+            @endif
+        </div>
+    </div>
     </div>
 
     <div class="mt-12 space-y-6">

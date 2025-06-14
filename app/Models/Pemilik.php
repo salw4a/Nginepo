@@ -20,7 +20,7 @@ class Pemilik extends Authenticatable
     protected $keyType = 'int';
 
     protected $fillable = [
-        'nama_pemilik',
+        'nama',
         'email',
         'kata_sandi',
         'telepon',

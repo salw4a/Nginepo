@@ -26,12 +26,12 @@
     <div class="mb-8">
         <h3 class="text-lg font-semibold text-brown-900 mb-4">Filter Lokasi:</h3>
         <div class="flex flex-wrap gap-2">
-            <a href="{{ route('properti.index') }}"
+            <a href="{{ route('pemilik.properti.index') }}"
                class="px-4 py-2 rounded-full border {{ !request('lokasi') ? 'bg-brown-900 text-white' : 'bg-white text-brown-900 border-brown-300' }} hover:bg-brown-800 hover:text-white transition-colors">
                 Semua
             </a>
             @foreach($lokasi as $loc)
-                <a href="{{ route('properti.index', ['lokasi' => $loc]) }}"
+                <a href="{{ route('pemilik.properti.index', ['lokasi' => $loc]) }}"
                    class="px-4 py-2 rounded-full border {{ request('lokasi') == $loc ? 'bg-brown-900 text-white' : 'bg-white text-brown-900 border-brown-300' }} hover:bg-brown-800 hover:text-white transition-colors">
                     {{ $loc }}
                 </a>
@@ -45,7 +45,7 @@
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
                  onclick="window.location='{{ route('pemilik.properti.detail', $item->id_properti) }}'">
                 <div class="aspect-w-16 aspect-h-12 bg-gray-200">
-                    <img src="{{ asset('storage/' . $item->foto) }}"
+                    <img src="{{ $item->foto }}"
                          alt="{{ $item->nama_properti }}"
                          class="w-full h-48 object-cover"
                          onerror="this.src='https://via.placeholder.com/400x300/e5e7eb/9ca3af?text=No+Image'">
@@ -68,9 +68,10 @@
         @endforelse
     </div>
     <div class="max-w-7xl mx-auto px-6 pb-8">
-        <div class="flex justify-end">
+        <div class="flex justify-end my-4">
             <a href="{{ route('pemilik.properti.create') }}"
-            class="inline-block bg-brown-900 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-brown-800 transition">
+            class="inline-block text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-amber-700 transition my-4"
+            style="background-color: #7B3F00;">
                 Buat Katalog
             </a>
         </div>

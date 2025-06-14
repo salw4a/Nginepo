@@ -1,134 +1,183 @@
 @extends('penyewa.layouts.main')
-@section('title', 'Beranda')
 
-@section('contents')
-    <!-- Hero Section -->
-    <section class="hero relative text-white text-center py-32 bg-gradient-to-b from-black/50 to-black/30"
-             style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="relative z-10 max-w-4xl mx-auto px-4">
+@section('title', 'Beranda - Nginepo')
+
+@section('content')
+<!-- Hero Section -->
+<section class="relative h-screen bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/bghome.png') }}');">
+    <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white px-4">
             <h1 class="text-5xl md:text-6xl font-bold mb-6">Selamat Datang!</h1>
-            <p class="text-xl md:text-2xl mb-10 leading-relaxed max-w-3xl mx-auto">
-                Dengan Nginepo, penyewaan tempat penginapan<br>
-                dapat dilakukan dimana saja dan kapan saja
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+                Dengan Nginepo, penyewaan tempat penginapan dapat dilakukan dimana saja dan kapan saja
             </p>
-            <a href="#" class="inline-block bg-[#8B4513] hover:bg-[#A0522D] text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <a href="{{route('penyewa.properti.index')}}" class="inline-block bg-amber-800 hover:bg-amber-900 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                 Booking sekarang
             </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="py-16 px-6 bg-gradient-to-b from-orange-50 to-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#8B4513]">Penginapan populer di Jember</h2>
-                <a href="#" class="text-[#8B4513] hover:text-[#A0522D] font-semibold text-lg transition-colors duration-300">
-                    Lihat selengkapnya →
-                </a>
+<section id="katalog" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center mb-12">
+            <h2 class="text-4xl font-bold text-amber-800">Penginapan popular di Jember</h2>
+            <a href="{{ route('penyewa.properti.index') }}" class="text-amber-800 hover:text-amber-900 font-medium underline">
+                Lihat selengkapnya
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="{{ asset('images/terastanjung.png') }}" alt="Pondok Rowo Indah" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Pondok Rowo Indah</h3>
+                    <p class="text-amber-700 font-medium text-lg">Rp 150.000 per malam</p>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                             alt="Pondok Rowo Indah"
-                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
-                        <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-[#8B4513]">
-                            Popular
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-lg text-gray-800 mb-2">Pondok Rowo Indah</h3>
-                        <p class="text-[#8B4513] font-bold text-xl">Rp 150.000 <span class="text-sm font-normal text-gray-600">per malam</span></p>
-                        <div class="mt-3 flex items-center text-yellow-500">
-                            <span class="text-sm">★★★★★</span>
-                            <span class="ml-2 text-gray-600 text-sm">(4.8)</span>
-                        </div>
-                    </div>
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="{{ asset('images/kertanegara.png') }}" alt="Omah Tawon" class="w-full h-full object-cover">
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                             alt="Omah Tawon"
-                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-lg text-gray-800 mb-2">Omah Tawon</h3>
-                        <p class="text-[#8B4513] font-bold text-xl">Rp 135.000 <span class="text-sm font-normal text-gray-600">per malam</span></p>
-                        <div class="mt-3 flex items-center text-yellow-500">
-                            <span class="text-sm">★★★★☆</span>
-                            <span class="ml-2 text-gray-600 text-sm">(4.5)</span>
-                        </div>
-                    </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Omah Tawon</h3>
+                    <p class="text-amber-700 font-medium text-lg">Rp 135.000 per malam</p>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                             alt="Omah Kali Putih"
-                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-lg text-gray-800 mb-2">Omah Kali Putih</h3>
-                        <p class="text-[#8B4513] font-bold text-xl">Rp 200.000 <span class="text-sm font-normal text-gray-600">per malam</span></p>
-                        <div class="mt-3 flex items-center text-yellow-500">
-                            <span class="text-sm">★★★★★</span>
-                            <span class="ml-2 text-gray-600 text-sm">(4.9)</span>
-                        </div>
-                    </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="{{ asset('images/omahkali.png') }}" alt="Omah Kali Putih" class="w-full h-full object-cover">
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                             alt="Teras Tanjung Papuma"
-                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            Hot Deal
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-lg text-gray-800 mb-2">Teras Tanjung Papuma</h3>
-                        <p class="text-[#8B4513] font-bold text-xl">Rp 250.000 <span class="text-sm font-normal text-gray-600">per malam</span></p>
-                        <div class="mt-3 flex items-center text-yellow-500">
-                            <span class="text-sm">★★★★★</span>
-                            <span class="ml-2 text-gray-600 text-sm">(5.0)</span>
-                        </div>
-                    </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Omah Kali Putih</h3>
+                    <p class="text-amber-700 font-medium text-lg">Rp 200.000 per malam</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="{{ asset('images/omahdewe.png') }}" alt="Teras Tanjung Papuma" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Teras Tanjung Papuma</h3>
+                    <p class="text-amber-700 font-medium text-lg">Rp 250.000 per malam</p>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="py-20 bg-gradient-to-b from-[#8B4513] to-[#A0522D] text-white">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-16">About Us</h2>
-            <div class="mb-16">
-                <div class="inline-flex items-center text-6xl font-bold mb-4">
-                    <div class="mr-4 text-8xl">🏠</div>
-                    <span class="text-white tracking-wider">Nginepo</span>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="{{ asset('images/landingpage.png') }}" alt="Kertanegara" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Kertanegara</h3>
+                    <p class="text-amber-700 font-medium text-lg">Rp 450.000 per malam</p>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
-                    <div class="text-5xl mb-6">🏛️</div>
-                    <h3 class="text-xl font-bold mb-4">Sebuah platform</h3>
-                    <p class="text-white/90 leading-relaxed">
-                        untuk penyewaan rumah warga di wilayah wisata Jember
-                    </p>
+
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="{{ asset('images/rembangan.png') }}" alt="Rembangan Hill" class="w-full h-full object-cover">
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
-                    <div class="text-5xl mb-6">📍</div>
-                    <h3 class="text-xl font-bold mb-4">Katalog yang informatif</h3>
-                    <p class="text-white/90 leading-relaxed">
-                        mulai dari lokasi, harga, fasilitas serta dilengkapi dengan foto
-                    </p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
-                    <div class="text-5xl mb-6">💳</div>
-                    <h3 class="text-xl font-bold mb-4">Proses transaksi</h3>
-                    <p class="text-white/90 leading-relaxed">
-                        yang aman dan terdokumentasi
-                    </p>
+                <div class="p-6 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Rembangan Hill</h3>
+                    <p class="text-amber-700 font-medium text-lg">Rp 300.000 per malam</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-amber-800 mb-8">About Us</h2>
+
+        <div class="mb-12">
+            <img src="{{ asset('images/favicon.png') }}" alt="Nginepo Logo" class="h-24 mx-auto mb-4">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-amber-50 p-8 rounded-2xl">
+                <div class="text-5xl mb-6">🏛️</div>
+                <h3 class="text-xl font-semibold text-amber-800 mb-4">
+                    Sebuah platform untuk penyewaan rumah warga di wilayah wisata Jember
+                </h3>
+            </div>
+
+            <div class="bg-amber-50 p-8 rounded-2xl">
+                <div class="text-5xl mb-6">📍</div>
+                <h3 class="text-xl font-semibold text-amber-800 mb-4">
+                    Katalog yang informatif mulai dari lokasi, harga, fasilitas serta dilengkapi dengan foto
+                </h3>
+            </div>
+
+            <div class="bg-amber-50 p-8 rounded-2xl">
+                <div class="text-5xl mb-6">💳</div>
+                <h3 class="text-xl font-semibold text-amber-800 mb-4">
+                    Proses transaksi yang aman dan terdokumentasi
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Smooth Scroll Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all accommodation cards
+    document.querySelectorAll('.bg-white.rounded-2xl').forEach(card => {
+        observer.observe(card);
+    });
+});
+</script>
+
+<style>
+.animate-fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
 @endsection

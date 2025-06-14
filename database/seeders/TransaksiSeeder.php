@@ -30,6 +30,16 @@ class TransaksiSeeder extends Seeder
                 'tanggal_selesai' => Carbon::now()->addDays(5)->format('Y-m-d'),
                 'total_harga' => 1500000,
                 'id_pengguna' => 1,
+            ],
+            [
+                'id_status_pembayaran' => 1,
+                'tanggal_pembayaran' => Carbon::now(),
+                'nomor_invoice' => 'NGPO-003',
+                'nama_properti' => 'Pondok Rowo Indah',
+                'tanggal_mulai' => Carbon::now()->addDays(1)->format('Y-m-d'),
+                'tanggal_selesai' => Carbon::now()->addDays(5)->format('Y-m-d'),
+                'total_harga' => 1000000,
+                'id_pengguna' => 1,
             ]
         ];
 

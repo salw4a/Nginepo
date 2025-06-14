@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('kata_sandi');
-            $table->string('no_hp')->nullable();
+            $table->string('telepon')->nullable();
             $table->text('alamat')->nullable();
             $table->string('foto_profil')->nullable();
             $table->unsignedBigInteger('id_role');

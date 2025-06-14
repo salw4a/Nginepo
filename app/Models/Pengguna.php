@@ -15,7 +15,7 @@ class Pengguna extends Authenticatable
 
     protected $fillable = [
         'nama', 'email', 'kata_sandi',
-        'no_hp', 'alamat', 'foto_profil', 'id_role'
+        'telepon', 'alamat', 'foto_profil', 'id_role'
     ];
 
     public function getAuthPassword()

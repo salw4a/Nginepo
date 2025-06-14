@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Review;
+use Carbon\Carbon;
 
 class ReviewSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class ReviewSeeder extends Seeder
             [
                 'id_transaksi' => 1,
                 'rating' => 5,
-                'komentar' => 'Pengalaman menginap sangat menyenangkan!',
+                'komentar' => 'Pengalaman menginap sangat menyenangkan!'
             ]
         ];
 

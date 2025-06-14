@@ -12,19 +12,21 @@ class PenggunaSeeder extends Seeder
     {
         $pengguna = [
             [
+                'id_pengguna' => 1,
                 'nama' => 'Penyewa Sample',
                 'email' => 'penyewa@example.com',
                 'kata_sandi' => Hash::make('password123'),
-                'no_hp' => '081234567890',
+                'telepon' => '081234567890',
                 'alamat' => 'Jl. Contoh No. 1',
                 'foto_profil' => null,
                 'id_role' => 1,
             ],
             [
+                'id_pengguna' => 2,
                 'nama' => 'Admin Sample',
                 'email' => 'admin@example.com',
                 'kata_sandi' => Hash::make('adminpassword'),
-                'no_hp' => '082345678901',
+                'telepon' => '082345678901',
                 'alamat' => 'Jl. Admin No. 1',
                 'foto_profil' => null,
                 'id_role' => 2,

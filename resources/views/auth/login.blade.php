@@ -62,7 +62,7 @@
             </form>
 
             <p class="text-sm text-center mt-6">Belum memiliki akun?
-                <a href="/register" class="text-[#5a2d0c] font-semibold">Register</a>
+                <a href="{{ route('register') }}" class="text-[#5a2d0c] font-semibold">Register</a>
             </p>
         </div>
     </div>

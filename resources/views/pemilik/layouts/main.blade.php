@@ -39,4 +39,6 @@
     <main class="flex-1 ml-64 p-6">
         @yield('content')
     </main>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @stack('scripts')
 </body>

@@ -1,8 +1,8 @@
 @extends('penyewa.layouts.main')
 
 @section('content')
-<div class="mb-6">
-    <h1 class="text-2xl font-bold text-brown">Detail Transaksi</h1>
+<div class="mt-6 mb-6 pl-10">
+    <h1 class="text-2xl font-bold text-brown pl-40">Detail Transaksi</h1>
 </div>
 
 <div class="bg-white rounded-3xl shadow-lg p-8 max-w-5xl mx-auto">
@@ -70,11 +70,15 @@
                 <p class="text-yellow-500 mb-1">Rating: {{ $transaksi->review->rating }}/5</p>
                 <p class="text-gray-700">{{ $transaksi->review->komentar }}</p>
             </div>
-        @else
-            <a href="{{ route('penyewa.transaksi.review.create', ['id' => $transaksi->id_transaksi]) }}"
-            class="bg-brown text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors inline-block">
+        @elseif ($transaksi->statusPembayaran)
+            @if (strtolower($transaksi->statusPembayaran->nama_status_pembayaran) === 'bayar')
+            <div class="flex justify-end">
+                <a href="{{ route('penyewa.transaksi.review.create', ['id' => $transaksi->id_transaksi]) }}"
+                class="bg-[#8B4513] text-white border-2 border-[#8B4513] px-8 py-3 rounded-lg font-medium hover:bg-[#7A3E10] transition-all shadow inline-block">
                 Review
-            </a>
+                </a>
+            </div>
+            @endif
         @endif
     </div>
 
@@ -82,7 +86,7 @@
 
 <div class="mt-8 flex justify-start">
     <a href="{{ route('penyewa.transaksi.index') }}"
-        class="text-brown hover:text-opacity-80 font-medium flex items-center">
+        class="text-brown hover:text-opacity-80 font-medium flex items-center pl-40">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>

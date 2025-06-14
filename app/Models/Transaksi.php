@@ -15,18 +15,14 @@ class Transaksi extends Model
 
     protected $fillable = [
         'tanggal_pembayaran','nomor_invoice', 'nama_properti',
-        'tanggal_mulai', 'tanggal_selesai','total_harga'
+        'tanggal_mulai', 'tanggal_selesai','total_harga','id_pengguna','id_status_pembayaran',
     ];
 
     protected $casts = [
-        'id_pengguna',
-        'id_status_pembayaran',
         'tanggal_pembayaran' => 'datetime',
-        'nama_properti',
         'tanggal_mulai' => 'date',
         'tanggal_selesai' => 'date',
         'total_harga' => 'decimal:2',
-        'id_review'
     ];
 
     public function statusPembayaran()
